@@ -23,4 +23,4 @@ router.put('/profile', validateUser, updateUserProfile);
 router.delete('/profile', deleteUser);
 router.put('/change-password', changePassword);
 
-export default router; 
+export default router;

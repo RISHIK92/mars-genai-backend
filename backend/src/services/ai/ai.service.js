@@ -1,29 +1,118 @@
 import { providers, models, capabilities } from '../../config/ai-providers.js';
 import promptAnalyzerService from './promptAnalyzer.service.js';
+import { OpenAI } from 'openai';
+import { config } from '../../config/config.js';
+import logger from '../../utils/logger.js';
+
+const openai = new OpenAI({
+  apiKey: config.openaiApiKey,
+});
 
 class AIService {
-  async generateContent(prompt, template = null) {
+  async generateContent(prompt, model = 'gemini-2.0-flash-lite-001', parameters = {}) {
     try {
-      // Analyze the prompt to determine the best provider
-      const analysis = await promptAnalyzerService.analyzePrompt(prompt);
-      const { category, specificCategory, recommendedProviders } = analysis;
+      logger.info('Generating content with Gemini', { 
+        model, 
+        parameters,
+        hasApiKey: !!providers.gemini.apiKey 
+      });
 
-      // Select the first recommended provider
-      const provider = recommendedProviders[0];
-
-      // Generate content based on the category
-      switch (category) {
-        case 'text':
-          return await this.generateText(prompt, provider, specificCategory, template);
-        case 'image':
-          return await this.generateImage(prompt, provider, specificCategory);
-        default:
-          throw new Error('Unsupported content category');
+      if (!providers.gemini.apiKey) {
+        throw new Error('Gemini API key is not configured');
       }
+
+      const gemini = providers.gemini;
+      const modelInstance = gemini.getGenerativeModel({ 
+        model: 'gemini-2.0-flash-lite-001',
+        generationConfig: {
+          temperature: parameters.temperature || 0.7,
+          maxOutputTokens: parameters.max_tokens || 100,
+          topP: parameters.top_p || 0.8,
+          topK: parameters.top_k || 40,
+        }
+      });
+
+      const result = await modelInstance.generateContent({
+        contents: [{ 
+          role: 'user', 
+          parts: [{ text: prompt }] 
+        }]
+      });
+
+      const response = await result.response;
+      const text = response.text();
+
+      return {
+        content: text,
+        result: JSON.stringify({
+          text,
+          usage: {
+            prompt_tokens: 0,
+            completion_tokens: 0,
+            total_tokens: 0,
+          }
+        }),
+        metadata: JSON.stringify({
+          model: 'gemini-2.0-flash-lite-001',
+          provider: 'gemini',
+          parameters,
+        }),
+      };
     } catch (error) {
-      console.log(error)
-      throw error;
+      logger.error('Error generating content with Gemini:', error);
+      throw new Error(`Content generation failed: ${error.message}`);
     }
+  }
+
+  async analyzePrompt(prompt) {
+    try {
+      logger.info('Analyzing prompt with Gemini');
+
+      const gemini = providers.gemini;
+      const model = gemini.getGenerativeModel({ 
+        model: 'gemini-2.0-flash-lite-001',
+        generationConfig: {
+          temperature: 0.3,
+          maxOutputTokens: 100,
+        }
+      });
+
+      const result = await model.generateContent({
+        contents: [{
+          role: 'user',
+          parts: [{
+            text: `Analyze this prompt and determine its category (general, research, coding, creative): "${prompt}"`
+          }]
+        }]
+      });
+
+      const response = await result.response;
+      const analysis = response.text().toLowerCase();
+
+      return {
+        category: this.determineCategory(analysis),
+        confidence: 0.9,
+      };
+    } catch (error) {
+      logger.error('Error analyzing prompt:', error);
+      throw new Error(`Prompt analysis failed: ${error.message}`);
+    }
+  }
+
+  determineCategory(analysis) {
+    const categories = {
+      research: ['research', 'study', 'analyze', 'investigate'],
+      coding: ['code', 'program', 'function', 'algorithm'],
+      creative: ['story', 'poem', 'creative', 'imagine'],
+    };
+
+    for (const [category, keywords] of Object.entries(categories)) {
+      if (keywords.some(keyword => analysis.includes(keyword))) {
+        return category;
+      }
+    }
+
+    return 'general';
   }
 
   async generateText(prompt, provider, category, template) {
@@ -33,7 +122,7 @@ class AIService {
 
       switch (provider) {
         case 'openai':
-          response = await providers.openai.chat.completions.create({
+          response = await openai.chat.completions.create({
             model,
             messages: [
               {
@@ -65,7 +154,7 @@ class AIService {
           throw new Error('Unsupported text generation provider');
       }
     } catch (error) {
-      _error('Error generating text:', error);
+      logger.error('Error generating text:', error);
       throw error;
     }
   }
@@ -101,7 +190,7 @@ class AIService {
           throw new Error('Unsupported image generation provider');
       }
     } catch (error) {
-      _error('Error generating image:', error);
+      logger.error('Error generating image:', error);
       throw error;
     }
   }
@@ -109,7 +198,7 @@ class AIService {
   async analyzeDataset(dataset) {
     try {
       // Use OpenAI to analyze the dataset content
-      const response = await providers.openai.chat.completions.create({
+      const response = await openai.chat.completions.create({
         model: 'gpt-4',
         messages: [
           {
@@ -132,7 +221,7 @@ class AIService {
         recommendedProviders: this.getRecommendedProvidersForDataset(analysis.type),
       };
     } catch (error) {
-      _error('Error analyzing dataset:', error);
+      logger.error('Error analyzing dataset:', error);
       throw error;
     }
   }

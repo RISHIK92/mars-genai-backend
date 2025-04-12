@@ -25,4 +25,20 @@ logger.stream = {
   },
 };
 
+export const error = (message, ...args) => {
+  logger.error(message, ...args);
+};
+
+export const info = (message, ...args) => {
+  logger.info(message, ...args);
+};
+
+export const warn = (message, ...args) => {
+  logger.warn(message, ...args);
+};
+
+export const debug = (message, ...args) => {
+  logger.debug(message, ...args);
+};
+
 export default logger;

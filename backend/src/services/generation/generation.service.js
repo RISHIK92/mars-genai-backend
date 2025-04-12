@@ -1,84 +1,137 @@
 import { PrismaClient } from '@prisma/client';
 import aiService from '../ai/ai.service.js';
-// import { info } from '../../utils/logger.js';
+import logger from '../../utils/logger.js';
 import Queue from 'bull';
 const generationQueue = new Queue('generation', process.env.REDIS_URL);
 
 const prisma = new PrismaClient();
 
 class GenerationService {
-  async createGeneration(userId, data) {
+  async createGeneration(userId, { prompt, model, parameters }) {
     try {
-      const { prompt, templateId, datasetId } = data;
-
-      let template = null;
-      if (templateId) {
-        template = await prisma.template.findUnique({
-          where: { id: templateId },
-        });
-        if (!template) {
-          throw new Error('Template not found');
-        }
+      if (!userId) {
+        throw new Error('User ID is required');
       }
 
-      let dataset = null;
-      if (datasetId) {
-        dataset = await prisma.dataset.findUnique({
-          where: { id: datasetId },
-        });
-        if (!dataset) {
-          throw new Error('Dataset not found');
-        }
-      }
+      logger.info('Creating generation record', { userId, model });
 
-      const content = await aiService.generateContent(prompt, template?.content);
-
+      // Create the generation record
       const generation = await prisma.generation.create({
         data: {
-          userId,
           prompt,
-          content,
-          templateId,
-          datasetId,
-          status: 'COMPLETED',
-        },
+          model,
+          parameters,
+          status: 'PENDING',
+          startTime: new Date(),
+          user: {
+            connect: {
+              id: userId
+            }
+          }
+        }
       });
-      return generation;
+
+      try {
+        // Generate content using AI service
+        const result = await aiService.generateContent(prompt, model, parameters);
+        
+        // Update generation with result
+        const updatedGeneration = await prisma.generation.update({
+          where: { id: generation.id },
+          data: {
+            content: result.content,
+            result: result.result,
+            status: 'COMPLETED',
+            endTime: new Date(),
+            metadata: result.metadata || {}
+          }
+        });
+
+        // Create analytics record
+        await prisma.analytics.create({
+          data: {
+            type: 'GENERATION',
+            action: 'GENERATE',
+            userId: userId,
+            generationId: generation.id,
+            tokensUsed: 0, // Gemini doesn't provide token counts
+            cost: 0, // You might want to calculate this based on your pricing
+            metadata: {
+              model: model,
+              parameters: parameters,
+              promptLength: prompt.length
+            }
+          }
+        });
+
+        return updatedGeneration;
+      } catch (error) {
+        // If AI generation fails, update generation with error
+        logger.error('AI generation failed:', error);
+        await prisma.generation.update({
+          where: { id: generation.id },
+          data: {
+            status: 'FAILED',
+            error: error.message,
+            endTime: new Date()
+          }
+        });
+
+        // Create analytics record for failed generation
+        await prisma.analytics.create({
+          data: {
+            type: 'GENERATION',
+            action: 'GENERATE',
+            userId: userId,
+            generationId: generation.id,
+            tokensUsed: 0,
+            cost: 0,
+            metadata: {
+              model: model,
+              parameters: parameters,
+              promptLength: prompt.length,
+              error: error.message
+            }
+          }
+        });
+
+        throw new Error(`Generation failed: ${error.message}`);
+      }
     } catch (error) {
-      console.log(error)
-      throw error;
+      logger.error('Error in createGeneration:', error);
+      throw new Error(`Generation failed: ${error.message}`);
     }
   }
 
   async getGenerations(userId, page = 1, limit = 10) {
     try {
-      const skip = (page - 1) * limit;
-      const generations = await prisma.generation.findMany({
-        where: { userId },
-        skip,
-        take: limit,
-        orderBy: { createdAt: 'desc' },
-        include: {
-          template: {
-            select: {
-              id: true,
-              name: true,
-              description: true,
-            },
-          },
-          dataset: {
-            select: {
-              id: true,
-              name: true,
-              description: true,
-            },
-          },
-        },
-      });
+      if (!userId) {
+        throw new Error('User ID is required');
+      }
 
-      const total = await prisma.generation.count({
-        where: { userId },
-      });
+      const skip = (page - 1) * limit;
+
+      const [generations, total] = await Promise.all([
+        prisma.generation.findMany({
+          where: {
+            user: {
+              id: userId
+            }
+          },
+          orderBy: {
+            createdAt: 'desc'
+          },
+          skip,
+          take: limit
+        }),
+        prisma.generation.count({
+          where: {
+            user: {
+              id: userId
+            }
+          }
+        })
+      ]);
 
       return {
         generations,
@@ -86,48 +139,37 @@ class GenerationService {
           total,
           page,
           limit,
-          totalPages: Math.ceil(total / limit),
-        },
+          totalPages: Math.ceil(total / limit)
+        }
       };
     } catch (error) {
-      _error('Error getting generations:', error);
-      throw error;
+      logger.error('Error in getGenerations:', error);
+      throw new Error(`Failed to get generations: ${error.message}`);
     }
   }
 
-  async getGenerationById(id, userId) {
+  async getGenerationById(userId, generationId) {
     try {
-      const generation = await prisma.generation.findUnique({
-        where: { id },
-        include: {
-          template: {
-            select: {
-              id: true,
-              name: true,
-              description: true,
-            },
-          },
-          dataset: {
-            select: {
-              id: true,
-              name: true,
-              description: true,
-            },
-          },
-        },
+      if (!userId) {
+        throw new Error('User ID is required');
+      }
+
+      const generation = await prisma.generation.findFirst({
+        where: {
+          id: generationId,
+          user: {
+            id: userId
+          }
+        }
       });
 
       if (!generation) {
         throw new Error('Generation not found');
       }
 
-      if (generation.userId !== userId) {
-        throw new Error('Unauthorized access to generation');
-      }
-
       return generation;
     } catch (error) {
-      _error('Error getting generation by ID:', error);
+      logger.error('Error in getGenerationById:', error);
       throw error;
     }
   }

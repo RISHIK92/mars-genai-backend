@@ -1,82 +1,63 @@
-import { providers, promptAnalysis } from '../../config/ai-providers.js';
+import { OpenAI } from 'openai';
+import { config } from '../../config/config.js';
+import logger from '../../utils/logger.js';
+
+const openai = new OpenAI({
+  apiKey: config.openaiApiKey,
+});
 
 class PromptAnalyzerService {
   async analyzePrompt(prompt) {
     try {
-      const isImagePrompt = this.isImagePrompt(prompt);
-      const category = isImagePrompt ? 'image' : 'text';
-
-      // Analyze the prompt to determine the specific category
-      const specificCategory = await this.determineSpecificCategory(prompt, category);
-
-      // Get the recommended providers for this category
-      const recommendedProviders = this.getRecommendedProviders(category, specificCategory);
-
+      const category = await this.determineSpecificCategory(prompt);
+      const providers = await this.getRecommendedProviders(category);
+      
       return {
         category,
-        specificCategory,
-        recommendedProviders,
+        providers,
+        confidence: 0.8 // Default confidence score
       };
     } catch (error) {
-      console.log(error)
+      logger.error('Error analyzing prompt:', error);
+      throw new Error(`Prompt analysis failed: ${error.message}`);
     }
   }
 
-  isImagePrompt(prompt) {
-    const imageKeywords = ['image', 'picture', 'photo', 'draw', 'paint', 'visual'];
-    const lowerPrompt = prompt.toLowerCase();
-    return imageKeywords.some(keyword => lowerPrompt.includes(keyword));
-  }
-
-  async determineSpecificCategory(prompt, category) {
+  async determineSpecificCategory(prompt) {
     try {
-      // Use OpenAI to analyze the prompt for more accurate categorization
-      const response = await providers.openai.chat.completions.create({
-        model: 'gpt-4',
+      const response = await openai.chat.completions.create({
+        model: 'gpt-3.5-turbo',
         messages: [
           {
             role: 'system',
-            content: `Analyze the following prompt and categorize it into one of these categories: ${promptAnalysis.categories[category].join(', ')}. Return only the category name.`,
+            content: 'Analyze the following prompt and determine its specific category. Categories: general, coding, creative, research, image_generation'
           },
           {
             role: 'user',
-            content: prompt,
-          },
+            content: prompt
+          }
         ],
         temperature: 0.3,
-        max_tokens: 10,
+        max_tokens: 50
       });
 
-      const determinedCategory = response.choices[0].message.content.toLowerCase().trim();
-
-      // Validate the determined category
-      if (promptAnalysis.categories[category].includes(determinedCategory)) {
-        return determinedCategory;
-      }
-
-      // Fallback to keyword-based analysis if OpenAI's response is invalid
-      return this.analyzeByKeywords(prompt, category);
+      return response.choices[0].message.content.trim().toLowerCase();
     } catch (error) {
-        console.log(error)
-      return this.analyzeByKeywords(prompt, category);
+      logger.error('Error determining category:', error);
+      throw new Error(`Category determination failed: ${error.message}`);
     }
   }
 
-  analyzeByKeywords(prompt, category) {
-    const lowerPrompt = prompt.toLowerCase();
-    
-    for (const [cat, keywords] of Object.entries(promptAnalysis.keywords)) {
-      if (keywords.some(keyword => lowerPrompt.includes(keyword))) {
-        return cat;
-      }
-    }
+  getRecommendedProviders(category) {
+    const providerMap = {
+      general: ['openai', 'anthropic'],
+      coding: ['openai'],
+      creative: ['anthropic'],
+      research: ['anthropic'],
+      image_generation: ['stability', 'replicate']
+    };
 
-    return 'general';
-  }
-
-  getRecommendedProviders(category, specificCategory) {
-    const { capabilities } = require('../../config/ai-providers');
-    return capabilities[category][specificCategory] || capabilities[category].general;
+    return providerMap[category] || ['openai'];
   }
 }
 

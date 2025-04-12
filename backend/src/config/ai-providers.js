@@ -1,14 +1,17 @@
-import { OpenAI } from 'openai';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import { Anthropic } from '@anthropic-ai/sdk';
 import pkg from 'stability-ai';
 const { generateAsync } = pkg;
 import Replicate from 'replicate'; // Import directly, not destructured
 import { config } from './config.js';
+import logger from '../utils/logger.js';
+
+// Initialize Gemini
+const gemini = new GoogleGenerativeAI(config.geminiApiKey);
+logger.info('Gemini initialized', { hasApiKey: !!config.geminiApiKey });
 
 const providers = {
-  openai: new OpenAI({
-    apiKey: config.openaiApiKey,
-  }),
+  gemini,
   anthropic: new Anthropic({
     apiKey: config.anthropicApiKey,
   }),
@@ -25,9 +28,9 @@ const providers = {
 
 const capabilities = {
   text: {
-    general: ['openai', 'anthropic'],
+    general: ['gemini', 'anthropic'],
     research: ['anthropic'],
-    coding: ['openai'],
+    coding: ['gemini'],
     creative: ['anthropic'],
   },
   image: {
@@ -38,14 +41,11 @@ const capabilities = {
 };
 
 const models = {
-  openai: {
+  gemini: {
     text: {
-      general: 'gpt-4',
-      coding: 'gpt-4',
-      creative: 'gpt-4',
-    },
-    image: {
-      general: 'dall-e-3',
+      general: 'gemini-pro',
+      coding: 'gemini-pro',
+      creative: 'gemini-pro',
     },
   },
   anthropic: {

@@ -1,7 +1,10 @@
 import { Router } from 'express';
 import { getUserAnalytics, getUsageTrends, getTemplateAnalytics } from '../../../services/analytics/analytics.service.js';
+import { authenticateToken } from '../middleware/auth.middleware.js';
 
 const router = Router();
+
+router.use(authenticateToken);
 
 // Get user analytics
 router.get('/', async (req, res) => {
@@ -13,8 +16,10 @@ router.get('/', async (req, res) => {
       ? new Date(req.query.endDate)
       : new Date();
 
+      console.log(req.user)
+
     const result = await getUserAnalytics(
-      req.user.id,
+      req.user.userId,
       startDate,
       endDate
     );

@@ -1,37 +1,46 @@
 import { Router } from 'express';
 import { validateGeneration } from '../../../utils/validators.js';
 import generationService from '../../../services/generation/generation.service.js';
+import { authenticateToken } from '../middleware/auth.middleware.js';
+import logger from '../../../utils/logger.js';
 
 const router = Router();
+
+// Apply authentication middleware to all routes
+router.use(authenticateToken);
 
 router.post('/', async (req, res) => {
     try {
       const { error } = validateGeneration(req.body);
+
       if (error) {
-        console.warn('Validation Error:', error.details[0].message);
+        logger.warn('Validation Error:', error.details[0].message);
         return res.status(400).json({ error: error.details[0].message });
       }
-  
-      console.log('✅ Request validated.');
-      console.log('📥 Body:', req.body);
-      console.log('🙋‍♂️ User:', req.user); // Debug user
+
+      logger.info('Creating generation:', {
+        model: req.body.model,
+        prompt: req.body.prompt,
+        parameters: req.body.parameters,
+        userId: req.user.id
+      });
   
       const generation = await generationService.createGeneration(
-        req.user?.id,  // Make sure req.user exists
+        req.user.id,
         req.body
       );
   
-      console.log("✅ Generation created successfully.");
+      logger.info('Generation created successfully:', { generationId: generation.id });
   
       res.status(201).json({
         message: 'Generation created successfully',
         generation,
       });
     } catch (error) {
-      console.error('❌ Error in generation POST:', error); // Full error
+      logger.error('Error in generation POST:', error);
       res.status(500).json({
         error: 'Internal server error',
-        message: error.message // Temporarily show real error
+        message: error.message
       });
     }
   });
@@ -43,6 +52,13 @@ router.get('/', async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
 
+    console.log(req.user)
+    logger.info('Getting generations:', {
+      userId: req.user.userId,
+      page,
+      limit
+    });
+
     const result = await generationService.getGenerations(
       req.user.id,
       page,
@@ -51,7 +67,7 @@ router.get('/', async (req, res) => {
 
     res.json(result);
   } catch (error) {
-    _error('Error getting generations:', error);
+    logger.error('Error getting generations:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
@@ -69,9 +85,9 @@ router.get('/:id', async (req, res) => {
     if (error.message === 'Generation not found') {
       return res.status(404).json({ error: 'Generation not found' });
     }
-    _error('Error getting generation:', error);
+    logger.error('Error getting generation:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
 
-export default router; 
+export default router;

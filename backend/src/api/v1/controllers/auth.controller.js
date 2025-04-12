@@ -82,7 +82,7 @@ export const login = async (req, res) => {
 export const getCurrentUser = async (req, res) => {
   try {
     const user = await prisma.user.findUnique({
-      where: { id: req.user.userId },
+      where: { id: req.user.id },
       select: { id: true, email: true, name: true },
     });
 
@@ -101,7 +101,7 @@ export const updateUser = async (req, res) => {
   try {
     const { name, email } = req.body;
     const user = await prisma.user.update({
-      where: { id: req.user.userId },
+      where: { id: req.user.id },
       data: { name, email },
       select: { id: true, email: true, name: true },
     });
@@ -117,7 +117,7 @@ export const updateUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
   try {
     await prisma.user.delete({
-      where: { id: req.user.userId },
+      where: { id: req.user.id },
     });
 
     logger.info(`User deleted successfully: ${req.user.userId}`);
@@ -126,4 +126,4 @@ export const deleteUser = async (req, res) => {
     logger.error('Error deleting user:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
-}; 
+};
