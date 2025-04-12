@@ -7,7 +7,8 @@ const prisma = new PrismaClient();
 export const createPrompt = async (req, res) => {
   try {
     const { name, description, content, category, template } = req.body;
-    const userId = req.user.userId;
+    const userId = req.user.id;
+    console.log(userId)
 
     const prompt = await prisma.prompt.create({
       data: {

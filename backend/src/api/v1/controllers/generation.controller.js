@@ -5,35 +5,45 @@ class GenerationController {
   async createGeneration(req, res) {
     try {
       const { prompt, model, parameters } = req.body;
-      
-      // Ensure user is authenticated and has an ID
-      if (!req.user || !req.user.id) {
-        logger.error('No user ID found in request');
-        return res.status(401).json({ error: 'Unauthorized - User not authenticated' });
+      const userId = req.user.id;
+
+      if (!userId) {
+        return res.status(401).json({ error: 'Unauthorized' });
       }
 
-      const userId = req.user.id;
-      logger.info(`Creating generation for user ${userId}`);
-
-      const generation = await generationService.createGeneration(userId, {
+      const result = await generationService.createGeneration(userId, {
         prompt,
         model,
-        parameters,
+        parameters
       });
 
-      res.status(201).json({
+      if (result.imageUrl) {
+        return res.status(201).json({
+          success: true,
+          message: 'Generation created successfully',
+          data: {
+            imageUrl: result.imageUrl,
+            metadata: result.metadata
+          }
+        });
+      }
+
+      return res.status(201).json({
+        success: true,
         message: 'Generation created successfully',
-        generation,
+        data: result
       });
     } catch (error) {
       logger.error('Error creating generation:', error);
-      res.status(500).json({ error: error.message });
+      return res.status(500).json({ 
+        success: false, 
+        error: error.message || 'Internal server error' 
+      });
     }
   }
 
   async getGenerations(req, res) {
     try {
-      // Ensure user is authenticated and has an ID
       if (!req.user || !req.user.id) {
         logger.error('No user ID found in request');
         return res.status(401).json({ error: 'Unauthorized - User not authenticated' });

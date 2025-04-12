@@ -16,8 +16,6 @@ router.get('/', async (req, res) => {
       ? new Date(req.query.endDate)
       : new Date();
 
-      console.log(req.user)
-
     const result = await getUserAnalytics(
       req.user.userId,
       startDate,
@@ -42,7 +40,7 @@ router.get('/trends', async (req, res) => {
 
     res.json(result);
   } catch (error) {
-    _error('Error getting usage trends:', error);
+    console.log('Error getting usage trends:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

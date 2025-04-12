@@ -18,7 +18,6 @@ export const authenticateToken = async (req, res, next) => {
     const decoded = jwt.verify(token, config.jwtSecret);
     console.log(decoded)
     
-    // Fetch user from database
     const user = await prisma.user.findUnique({
       where: { id: decoded.userId },
       select: {
@@ -39,7 +38,6 @@ export const authenticateToken = async (req, res, next) => {
       return res.status(401).json({ error: 'User not found' });
     }
 
-    // Attach user to request
     req.user = user;
     next();
   } catch (error) {

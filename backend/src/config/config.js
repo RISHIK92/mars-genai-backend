@@ -6,7 +6,6 @@ import logger from '../utils/logger.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Load .env file
 const envPath = path.resolve(process.cwd(), '.env');
 logger.info('Loading environment variables from:', { envPath });
 
@@ -16,7 +15,6 @@ if (result.error) {
   throw result.error;
 }
 
-// Log summary
 logger.info('Environment variables loaded:', {
   NODE_ENV: process.env.NODE_ENV,
   PORT: process.env.PORT,
@@ -43,7 +41,6 @@ const config = {
   bcryptSaltRounds: parseInt(process.env.BCRYPT_SALT_ROUNDS || '10'),
 };
 
-// Required env vars mapping
 const requiredEnvVarsMap = {
   GEMINI_API_KEY: config.geminiApiKey,
   JWT_SECRET: config.jwtSecret,

@@ -13,7 +13,7 @@ import generationRoutes from './api/v1/generations/routes.js';
 import analyticsRoutes from './api/v1/analytics/routes.js';
 import promptRoutes from './api/v1/prompts/routes.js';
 import userRoutes from './api/v1/users/routes.js';
-
+import csvRoutes from './api/v1/routes/csv.routes.js';
 dotenv.config();
 
 const app = express();
@@ -30,21 +30,22 @@ app.use(limiter);
 
 // CORS configuration
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  origin: 'http://localhost:3001',
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  exposedHeaders: ['Content-Range', 'X-Content-Range'],
 }));
 
 // Body parsing middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Request logging middleware
 app.use((req, res, next) => {
   logger.info(`${req.method} ${req.url}`);
   next();
 });
 
-// API Routes
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/templates', templateRoutes);
 app.use('/api/v1/datasets', datasetRoutes);
@@ -52,13 +53,12 @@ app.use('/api/v1/generations', generationRoutes);
 app.use('/api/v1/analytics', analyticsRoutes);
 app.use('/api/v1/prompts', promptRoutes);
 app.use('/api/v1/users', userRoutes);
-
-// Health check endpoint
+app.use('/api/v1/csv', csvRoutes);
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 
-// Error handling middleware
+
 app.use((err, req, res, next) => {
   logger.error('Error:', err);
   res.status(err.status || 500).json({
@@ -71,4 +71,4 @@ const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   logger.info(`Server is running on port ${PORT}`);
-}); 
+});

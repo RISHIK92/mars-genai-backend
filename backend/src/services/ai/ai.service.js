@@ -11,6 +11,48 @@ const openai = new OpenAI({
 class AIService {
   async generateContent(prompt, model = 'gemini-2.0-flash-lite-001', parameters = {}) {
     try {
+      if (model.includes('stable-diffusion') || model.includes('sdxl')) {
+        logger.info('Generating image with Stability AI', { 
+          model, 
+          parameters
+        });
+
+        const response = await providers.stability.generateImage({
+          prompt,
+          width: parameters.width || 1024,
+          height: parameters.height || 1024,
+          samples: parameters.samples || 1,
+          steps: 30,
+          cfg_scale: 7,
+          sampler: 'K_DPMPP_2M',
+          style_preset: 'photographic'
+        });
+
+        if (!response.artifacts || !response.artifacts[0]) {
+          throw new Error('No image generated');
+        }
+
+        const imageData = response.artifacts[0].base64;
+        
+        return {
+          content: imageData,
+          result: JSON.stringify({
+            image: imageData,
+            metadata: {
+              model,
+              provider: 'stability',
+              parameters
+            }
+          }),
+          metadata: JSON.stringify({
+            model,
+            provider: 'stability',
+            parameters,
+            type: 'image'
+          })
+        };
+      }
+
       logger.info('Generating content with Gemini', { 
         model, 
         parameters,
@@ -59,7 +101,7 @@ class AIService {
         }),
       };
     } catch (error) {
-      logger.error('Error generating content with Gemini:', error);
+      logger.error('Error generating content:', error);
       throw new Error(`Content generation failed: ${error.message}`);
     }
   }
@@ -166,14 +208,36 @@ class AIService {
 
       switch (provider) {
         case 'stability':
-          response = await providers.stability.generate({
+          response = await providers.stability.generateImage({
             prompt,
-            model,
             width: 1024,
             height: 1024,
             samples: 1,
+            steps: 30,
+            cfg_scale: 7,
+            style_preset: 'photographic'
           });
-          return response.artifacts[0].base64;
+          
+          if (!response.artifacts || response.artifacts.length === 0) {
+            throw new Error('No image generated');
+          }
+          
+          const imageBuffer = Buffer.from(response.artifacts[0].base64, 'base64');
+          
+          return {
+            image: imageBuffer,
+            imageUrl: `data:image/png;base64,${response.artifacts[0].base64}`,
+            metadata: {
+              model: model,
+              parameters: {
+                width: 1024,
+                height: 1024,
+                samples: 1,
+                steps: 30,
+                cfg_scale: 7
+              }
+            }
+          };
 
         case 'replicate':
           response = await providers.replicate.run(model, {
@@ -182,9 +246,28 @@ class AIService {
               width: 1024,
               height: 1024,
               num_outputs: 1,
+              num_inference_steps: 30,
+              guidance_scale: 7.5,
             },
           });
-          return response[0];
+          
+          if (!response || response.length === 0) {
+            throw new Error('No image generated');
+          }
+          
+          return {
+            imageUrl: response[0],
+            metadata: {
+              model: model,
+              parameters: {
+                width: 1024,
+                height: 1024,
+                num_outputs: 1,
+                num_inference_steps: 30,
+                guidance_scale: 7.5
+              }
+            }
+          };
 
         default:
           throw new Error('Unsupported image generation provider');
@@ -197,50 +280,62 @@ class AIService {
 
   async analyzeDataset(dataset) {
     try {
-      // Use OpenAI to analyze the dataset content
-      const response = await openai.chat.completions.create({
-        model: 'gpt-4',
-        messages: [
-          {
-            role: 'system',
-            content: 'Analyze the following dataset and determine its type and best use case. Return a JSON object with type and useCase fields.',
-          },
-          {
-            role: 'user',
-            content: dataset,
-          },
-        ],
-        temperature: 0.3,
-        max_tokens: 100,
+      const gemini = providers.gemini;
+      const model = gemini.getGenerativeModel({ 
+        model: 'gemini-2.0-flash-lite-001',
+        generationConfig: {
+          temperature: 0.3,
+          maxOutputTokens: 100,
+        }
       });
 
-      const analysis = JSON.parse(response.choices[0].message.content);
+      const result = await model.generateContent({
+        contents: [{
+          role: 'user',
+          parts: [{
+            text: `Analyze this dataset and determine its type (text, image, mixed): "${JSON.stringify(dataset)}"`
+          }]
+        }]
+      });
+
+      const response = await result.response;
+      const analysis = response.text().toLowerCase();
+
       return {
-        type: analysis.type,
-        useCase: analysis.useCase,
-        recommendedProviders: this.getRecommendedProvidersForDataset(analysis.type),
+        type: this.determineDatasetType(analysis),
+        confidence: 0.9,
       };
     } catch (error) {
       logger.error('Error analyzing dataset:', error);
-      throw error;
+      throw new Error(`Dataset analysis failed: ${error.message}`);
     }
+  }
+
+  determineDatasetType(analysis) {
+    const types = {
+      text: ['text', 'string', 'paragraph', 'sentence'],
+      image: ['image', 'picture', 'photo', 'visual'],
+      mixed: ['mixed', 'both', 'combined', 'multiple'],
+    };
+
+    for (const [type, keywords] of Object.entries(types)) {
+      if (keywords.some(keyword => analysis.includes(keyword))) {
+        return type;
+      }
+    }
+
+    return 'text';
   }
 
   getRecommendedProvidersForDataset(type) {
-    switch (type.toLowerCase()) {
-      case 'text':
-        return capabilities.text.general;
-      case 'image':
-        return capabilities.image.general;
-      case 'code':
-        return ['openai'];
-      case 'research':
-        return ['anthropic'];
-      default:
-        return ['openai', 'anthropic'];
-    }
+    const recommendations = {
+      text: ['openai', 'anthropic', 'gemini'],
+      image: ['stability', 'replicate'],
+      mixed: ['openai', 'anthropic', 'gemini', 'stability', 'replicate'],
+    };
+
+    return recommendations[type] || recommendations.text;
   }
 }
 
-const aiService = new AIService();
-export default aiService;
+export default new AIService();

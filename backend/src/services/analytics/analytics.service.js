@@ -21,7 +21,6 @@ class AnalyticsService {
         },
       });
 
-      // Calculate summary statistics
       const summary = {
         totalGenerations: analytics.length,
         totalTokens: analytics.reduce((sum, a) => sum + a.tokensUsed, 0),
@@ -73,7 +72,6 @@ class AnalyticsService {
         },
       });
 
-      // Group data by day
       const dailyData = {};
       analytics.forEach(a => {
         const date = a.createdAt.toISOString().split('T')[0];
@@ -90,7 +88,6 @@ class AnalyticsService {
         dailyData[date].cost += a.cost;
       });
 
-      // Convert to array and sort by date
       const trends = Object.values(dailyData).sort((a, b) => 
         new Date(a.date) - new Date(b.date)
       );
@@ -124,7 +121,6 @@ class AnalyticsService {
         },
       });
 
-      // Calculate template-specific statistics
       const summary = {
         totalUses: analytics.length,
         totalTokens: analytics.reduce((sum, a) => sum + a.tokensUsed, 0),

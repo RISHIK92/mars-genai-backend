@@ -15,7 +15,7 @@ class PromptAnalyzerService {
       return {
         category,
         providers,
-        confidence: 0.8 // Default confidence score
+        confidence: 0.8
       };
     } catch (error) {
       logger.error('Error analyzing prompt:', error);

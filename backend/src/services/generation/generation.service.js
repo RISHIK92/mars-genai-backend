@@ -15,7 +15,6 @@ class GenerationService {
 
       logger.info('Creating generation record', { userId, model });
 
-      // Create the generation record
       const generation = await prisma.generation.create({
         data: {
           prompt,
@@ -24,18 +23,14 @@ class GenerationService {
           status: 'PENDING',
           startTime: new Date(),
           user: {
-            connect: {
-              id: userId
-            }
+            connect: { id: userId }
           }
         }
       });
 
       try {
-        // Generate content using AI service
         const result = await aiService.generateContent(prompt, model, parameters);
-        
-        // Update generation with result
+
         const updatedGeneration = await prisma.generation.update({
           where: { id: generation.id },
           data: {
@@ -47,15 +42,14 @@ class GenerationService {
           }
         });
 
-        // Create analytics record
         await prisma.analytics.create({
           data: {
             type: 'GENERATION',
             action: 'GENERATE',
             userId: userId,
             generationId: generation.id,
-            tokensUsed: 0, // Gemini doesn't provide token counts
-            cost: 0, // You might want to calculate this based on your pricing
+            tokensUsed: 0,
+            cost: 0,
             metadata: {
               model: model,
               parameters: parameters,
@@ -66,7 +60,6 @@ class GenerationService {
 
         return updatedGeneration;
       } catch (error) {
-        // If AI generation fails, update generation with error
         logger.error('AI generation failed:', error);
         await prisma.generation.update({
           where: { id: generation.id },
@@ -77,7 +70,6 @@ class GenerationService {
           }
         });
 
-        // Create analytics record for failed generation
         await prisma.analytics.create({
           data: {
             type: 'GENERATION',

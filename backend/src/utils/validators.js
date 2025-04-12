@@ -46,7 +46,10 @@ const validateGeneration = (data) => {
     parameters: Joi.object({
       temperature: Joi.number().min(0).max(1).optional(),
       max_tokens: Joi.number().integer().min(1).optional(),
-      // Add other parameter validations as needed
+      width: Joi.number().integer().min(1).max(2048).optional(),
+      height: Joi.number().integer().min(1).max(2048).optional(),
+      samples: Joi.number().integer().min(1).max(4).optional(),
+      num_outputs: Joi.number().integer().min(1).max(4).optional()
     }).optional(),
   });
 

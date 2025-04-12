@@ -10,7 +10,6 @@ class AuthController {
     try {
       const { email, password, name } = req.body;
 
-      // Check if user already exists
       const existingUser = await prisma.user.findUnique({
         where: { email },
       });
@@ -19,10 +18,8 @@ class AuthController {
         return res.status(400).json({ error: 'User already exists' });
       }
 
-      // Hash password
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      // Create user
       const user = await prisma.user.create({
         data: {
           email,
@@ -31,7 +28,6 @@ class AuthController {
         },
       });
 
-      // Generate JWT token
       const token = jwt.sign(
         { userId: user.id },
         process.env.JWT_SECRET,
@@ -50,7 +46,6 @@ class AuthController {
     try {
       const { email, password } = req.body;
 
-      // Find user
       const user = await prisma.user.findUnique({
         where: { email },
       });
@@ -59,13 +54,11 @@ class AuthController {
         return res.status(401).json({ error: 'Invalid credentials' });
       }
 
-      // Verify password
       const validPassword = await bcrypt.compare(password, user.password);
       if (!validPassword) {
         return res.status(401).json({ error: 'Invalid credentials' });
       }
 
-      // Generate JWT token
       const token = jwt.sign(
         { userId: user.id },
         process.env.JWT_SECRET,

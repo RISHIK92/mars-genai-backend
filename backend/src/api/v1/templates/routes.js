@@ -1,9 +1,11 @@
 import { Router } from 'express';
 import { validateTemplate } from '../../../utils/validators.js';
 import { PrismaClient } from '@prisma/client';
-
+import { authenticateToken } from '../middleware/auth.middleware.js';
 const prisma = new PrismaClient();
 const router = Router();
+
+router.use(authenticateToken);
 
 router.post('/', async (req, res) => {
   try {
@@ -55,7 +57,7 @@ router.get('/', async (req, res) => {
       },
     });
   } catch (error) {
-    _error('Error getting templates:', error);
+    console.log('Error getting templates:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 });
