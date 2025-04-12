@@ -1,0 +1,203 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum DatasetType {
+  TEXT
+  IMAGE
+  CODE
+  RESEARCH
+}
+
+enum PromptType {
+  TEXT
+  CODE
+  IMAGE
+}
+
+enum GenerationStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+enum AnalyticsType {
+  PROMPT
+  DATASET
+  GENERATION
+  TEMPLATE
+}
+
+enum AnalyticsAction {
+  CREATE
+  READ
+  UPDATE
+  DELETE
+  GENERATE
+}
+
+model User {
+  id            String       @id @default(cuid())
+  email         String       @unique
+  name          String
+  password      String
+  bio           String?
+  role          Role        @default(USER)
+  preferences   Json?       @default("{}")
+  apiKey        String?     @unique
+  apiKeyLastUsed DateTime?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  // Relations
+  datasets      Dataset[]
+  prompts       Prompt[]
+  generations   Generation[]
+  templates     Template[]
+  analytics     Analytics[]
+
+  @@index([email])
+  @@index([apiKey])
+}
+
+model Dataset {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  content     String      @db.Text
+  type        DatasetType
+  metadata    Json?      @default("{}")
+  isPublic    Boolean    @default(false)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relations
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analytics   Analytics[]
+  prompts     Prompt[]   @relation("DatasetPrompts")
+
+  @@index([userId])
+  @@index([type])
+}
+
+model Prompt {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  content     String      @db.Text
+  category    String?     // Changed from tags to category to match controller
+  type        PromptType  @default(TEXT)
+  template    String?     // Added as a string field to match controller
+  tags        String[]    // Kept but may not be used in controller
+  metadata    Json?      @default("{}")
+  isPublic    Boolean    @default(false)
+  version     Int        @default(1)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relations
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  generations Generation[]
+  analytics   Analytics[]
+  datasets    Dataset[]  @relation("DatasetPrompts")
+  templateRef Template?  @relation(fields: [templateId], references: [id])  // Renamed to avoid conflict with template string field
+  templateId  String?
+
+  @@index([userId])
+  @@index([type])
+  @@index([templateId])
+}
+
+model Generation {
+  id          String           @id @default(cuid())
+  prompt      String          @db.Text
+  content     String?         @db.Text  // Added field to match controller
+  model       String?         // Made optional as it's not in controller
+  parameters  Json?           @default("{}")
+  result      String?        @db.Text  // Kept for backward compatibility
+  status      GenerationStatus @default(COMPLETED)
+  error       String?        @db.Text
+  metadata    Json?          @default("{}")
+  startTime   DateTime?
+  endTime     DateTime?
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  templateId  String?        // Added field to match controller
+
+  // Relations
+  userId      String
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  promptId    String?
+  promptRef   Prompt?        @relation(fields: [promptId], references: [id])  // Renamed to avoid field name conflict
+  templateRef Template?      @relation(fields: [templateId], references: [id])
+  analytics   Analytics[]
+
+  @@index([userId])
+  @@index([promptId])
+  @@index([templateId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Template {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  content     String      @db.Text
+  type        PromptType  @default(TEXT)
+  metadata    Json?      @default("{}")
+  isPublic    Boolean    @default(false)
+  version     Int        @default(1)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relations
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  prompts     Prompt[]
+  generations Generation[]
+  analytics   Analytics[]
+
+  @@index([userId])
+  @@index([type])
+}
+
+model Analytics {
+  id          String          @id @default(cuid())
+  type        AnalyticsType
+  action      AnalyticsAction
+  metadata    Json?          @default("{}")
+  createdAt   DateTime       @default(now())
+
+  // Relations
+  userId      String
+  user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  datasetId   String?
+  dataset     Dataset?       @relation(fields: [datasetId], references: [id], onDelete: Cascade)
+  promptId    String?
+  prompt      Prompt?        @relation(fields: [promptId], references: [id], onDelete: Cascade)
+  generationId String?
+  generation  Generation?    @relation(fields: [generationId], references: [id], onDelete: Cascade)
+  templateId   String?
+  template    Template?      @relation(fields: [templateId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([type])
+  @@index([action])
+  @@index([createdAt])
+}
