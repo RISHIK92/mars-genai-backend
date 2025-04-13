@@ -6,7 +6,6 @@ import logger from '../../../utils/logger.js';
 
 const router = Router();
 
-// Apply authentication middleware to all routes
 router.use(authenticateToken);
 
 router.post('/', async (req, res) => {
@@ -46,7 +45,6 @@ router.post('/', async (req, res) => {
   });
   
 
-// Get user's generations
 router.get('/', async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -72,7 +70,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get specific generation
 router.get('/:id', async (req, res) => {
   try {
     const generation = await generationService.getGenerationById(

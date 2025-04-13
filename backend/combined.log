@@ -1310,3 +1310,457 @@
 {"level":"info","message":"Creating generation record","model":"gemini-2.0-flash-lite-001","timestamp":"2025-04-12T22:55:03.428Z","userId":"cm9eaavd400006fixipf2ya76"}
 {"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash-lite-001","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-12T22:55:03.964Z"}
 {"generationId":"cm9etd84c000ltowvhitybo8a","level":"info","message":"Generation created successfully:","timestamp":"2025-04-12T22:55:07.005Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:00:27.326Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash-lite-001","parameters":{"max_tokens":1000,"temperature":0.2},"prompt":"explain about ai","timestamp":"2025-04-12T23:00:28.839Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash-lite-001","timestamp":"2025-04-12T23:00:28.842Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash-lite-001","parameters":{"max_tokens":1000,"temperature":0.2},"timestamp":"2025-04-12T23:00:30.266Z"}
+{"generationId":"cm9etk7no000otowvkz9rhv69","level":"info","message":"Generation created successfully:","timestamp":"2025-04-12T23:00:39.441Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:09:43.400Z"}
+{"level":"warn","message":"Validation Error:","timestamp":"2025-04-12T23:09:44.835Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:10:46.476Z"}
+{"level":"warn","message":"Validation Error:","timestamp":"2025-04-12T23:10:46.716Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:10:51.103Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash-lite-001","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"research about egg","timestamp":"2025-04-12T23:10:51.204Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash-lite-001","timestamp":"2025-04-12T23:10:51.206Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash-lite-001","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-12T23:10:52.561Z"}
+{"generationId":"cm9etxjuw000rtowvp9luzuo2","level":"info","message":"Generation created successfully:","timestamp":"2025-04-12T23:11:01.638Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:13:41.568Z"}
+{"level":"warn","message":"Validation Error:","timestamp":"2025-04-12T23:13:41.805Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:13:45.939Z"}
+{"level":"warn","message":"Validation Error:","timestamp":"2025-04-12T23:13:46.043Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:14:29.840Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-pro","parameters":{"max_tokens":2000,"temperature":0.2},"prompt":"Generate code for: hlo\nPlease provide the code with proper syntax highlighting and comments.","timestamp":"2025-04-12T23:14:30.061Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-pro","timestamp":"2025-04-12T23:14:30.063Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-pro","parameters":{"max_tokens":2000,"temperature":0.2},"timestamp":"2025-04-12T23:14:30.592Z"}
+{"generationId":"cm9eu28aw000utowvb2cx3pa4","level":"info","message":"Generation created successfully:","timestamp":"2025-04-12T23:14:36.920Z"}
+{"level":"info","message":"POST /api/v1/prompts","timestamp":"2025-04-12T23:23:07.171Z"}
+{"0":{"location":"body","msg":"Invalid prompt type","path":"type","type":"field"},"level":"warn","message":"Validation errors in prompt:","timestamp":"2025-04-12T23:23:08.815Z"}
+{"level":"info","message":"POST /api/v1/prompts","timestamp":"2025-04-12T23:23:15.613Z"}
+{"0":{"location":"body","msg":"Invalid prompt type","path":"type","type":"field"},"level":"warn","message":"Validation errors in prompt:","timestamp":"2025-04-12T23:23:15.740Z"}
+{"level":"info","message":"POST /api/v1/prompts","timestamp":"2025-04-12T23:26:25.626Z"}
+{"0":{"location":"body","msg":"Invalid prompt type","path":"type","type":"field"},"level":"warn","message":"Validation errors in prompt:","timestamp":"2025-04-12T23:26:25.894Z"}
+{"level":"info","message":"POST /api/v1/prompts","timestamp":"2025-04-12T23:26:31.678Z"}
+{"0":{"location":"body","msg":"Invalid prompt type","path":"type","type":"field"},"level":"warn","message":"Validation errors in prompt:","timestamp":"2025-04-12T23:26:31.799Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:27:13.767Z"}
+{"level":"warn","message":"Validation Error:","timestamp":"2025-04-12T23:27:14.074Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:27:41.498Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":100,"temperature":0.7},"prompt":"Write a short story about a robot learning to paint","timestamp":"2025-04-12T23:27:41.803Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-12T23:27:41.804Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":100,"temperature":0.7},"timestamp":"2025-04-12T23:27:43.580Z"}
+{"generationId":"cm9euj7y7000xtowvoh1y0o0m","level":"info","message":"Generation created successfully:","timestamp":"2025-04-12T23:27:46.786Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:28:02.273Z"}
+{"level":"warn","message":"Validation Error:","timestamp":"2025-04-12T23:28:02.536Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:29:44.331Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"code","timestamp":"2025-04-12T23:29:45.359Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-12T23:29:45.361Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-12T23:29:45.906Z"}
+{"generationId":"cm9eulujw0010towv150ug58h","level":"info","message":"Generation created successfully:","timestamp":"2025-04-12T23:29:49.671Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:30:24.695Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"code hello world in top 3 programming lanugage","timestamp":"2025-04-12T23:30:24.945Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-12T23:30:24.946Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-12T23:30:25.483Z"}
+{"generationId":"cm9eump3k0013towvwbxx5y7r","level":"info","message":"Generation created successfully:","timestamp":"2025-04-12T23:30:33.466Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:31:26.468Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":500,"temperature":0.7},"prompt":"code hello world in top 3 programming lanugage","timestamp":"2025-04-12T23:31:26.729Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-12T23:31:26.729Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":500,"temperature":0.7},"timestamp":"2025-04-12T23:31:27.260Z"}
+{"generationId":"cm9euo0rm0016towvld1ikic5","level":"info","message":"Generation created successfully:","timestamp":"2025-04-12T23:31:31.553Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:36:47.489Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1200,"temperature":0.7},"prompt":"Write a short story about a robot learning to paint","timestamp":"2025-04-12T23:36:48.624Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-12T23:36:48.626Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1200,"temperature":0.7},"timestamp":"2025-04-12T23:36:50.051Z"}
+{"generationId":"cm9euuxlg0019towvu8x43bxv","level":"info","message":"Generation created successfully:","timestamp":"2025-04-12T23:36:57.009Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:37:22.178Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"research","timestamp":"2025-04-12T23:37:22.431Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-12T23:37:22.431Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-12T23:37:22.991Z"}
+{"generationId":"cm9euvn8d001ctowvrb097d6c","level":"info","message":"Generation created successfully:","timestamp":"2025-04-12T23:37:27.174Z"}
+{"level":"info","message":"POST /api/v1/files/upload","timestamp":"2025-04-12T23:45:49.403Z"}
+{"level":"info","message":"POST /api/v1/files/upload","timestamp":"2025-04-12T23:46:22.664Z"}
+{"level":"info","message":"POST /api/v1/files/upload","timestamp":"2025-04-12T23:48:09.925Z"}
+{"level":"info","message":"POST /api/v1/api/v1/files/upload","timestamp":"2025-04-12T23:48:51.816Z"}
+{"level":"info","message":"POST /api/v1/files/upload","timestamp":"2025-04-12T23:49:34.338Z"}
+{"level":"info","message":"POST /api/v1/files/upload","timestamp":"2025-04-12T23:50:42.799Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-12T23:51:18.840Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-12T23:51:18.848Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-12T23:51:18.912Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-12T23:51:19.045Z"}
+{"level":"info","message":"POST /api/v1/csv/analyze","timestamp":"2025-04-12T23:54:19.614Z"}
+{"columns":["name","city","rating","cost_for_two","cusine","online_order","table_reservation"],"level":"info","message":"CSV parsed successfully","recordCount":20,"timestamp":"2025-04-12T23:54:21.174Z"}
+{"analysis":{"columns":7,"recordCount":20},"level":"info","message":"CSV analysis completed","timestamp":"2025-04-12T23:54:21.176Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-12T23:54:49.593Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"read the data and summarize","timestamp":"2025-04-12T23:54:49.813Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-12T23:54:49.814Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-12T23:54:54.798Z"}
+{"generationId":"cm9evi3ty0000488jkdhinfxc","level":"info","message":"Generation created successfully:","timestamp":"2025-04-12T23:54:57.998Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-12T23:56:40.886Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-12T23:56:40.891Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-12T23:56:40.934Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-12T23:56:41.003Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-12T23:56:43.116Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-12T23:56:43.119Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-12T23:56:43.155Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-12T23:56:43.193Z"}
+{"level":"info","message":"GET /api/v1/users/me","timestamp":"2025-04-13T01:47:44.370Z"}
+{"level":"info","message":"GET /api/v1/users/me","timestamp":"2025-04-13T01:47:46.670Z"}
+{"level":"info","message":"POST /api/v1/auth/logout","timestamp":"2025-04-13T01:47:47.015Z"}
+{"level":"info","message":"POST /api/v1/auth/logout","timestamp":"2025-04-13T01:47:47.018Z"}
+{"level":"info","message":"POST /api/v1/files/upload","timestamp":"2025-04-13T01:48:25.455Z"}
+{"level":"info","message":"POST /api/v1/files/upload","timestamp":"2025-04-13T01:48:46.551Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-13T01:56:50.495Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-13T01:56:50.502Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-13T01:56:50.547Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-13T01:56:50.628Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-13T01:56:51.165Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-13T01:56:51.167Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-13T01:56:51.193Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-13T01:56:51.228Z"}
+{"level":"info","message":"POST /api/v1/files/upload","timestamp":"2025-04-13T02:09:06.473Z"}
+{"level":"info","message":"POST /api/v1/csv/analyze","timestamp":"2025-04-13T02:16:39.668Z"}
+{"level":"warn","message":"No token provided","timestamp":"2025-04-13T02:16:39.673Z"}
+{"level":"info","message":"POST /api/v1/auth/login","timestamp":"2025-04-13T02:16:52.776Z"}
+{"level":"info","message":"User logged in successfully: cm9eaavd400006fixipf2ya76","timestamp":"2025-04-13T02:16:54.558Z"}
+{"level":"info","message":"POST /api/v1/csv/analyze","timestamp":"2025-04-13T02:17:07.968Z"}
+{"columns":["Name","Email","Event","Type","Whatsapp Group","Phone","Paid","Accommodation","College","Stream","Year"],"level":"info","message":"CSV parsed successfully","recordCount":5,"timestamp":"2025-04-13T02:17:08.769Z"}
+{"analysis":{"columns":11,"recordCount":5},"level":"info","message":"CSV analysis completed","timestamp":"2025-04-13T02:17:08.770Z"}
+{"level":"info","message":"GET /api/v1/users/me","timestamp":"2025-04-13T02:22:03.329Z"}
+{"level":"info","message":"GET /api/v1/users/me","timestamp":"2025-04-13T02:22:03.619Z"}
+{"level":"info","message":"POST /api/v1/auth/logout","timestamp":"2025-04-13T02:22:03.635Z"}
+{"level":"info","message":"POST /api/v1/auth/logout","timestamp":"2025-04-13T02:22:03.739Z"}
+{"level":"info","message":"POST /api/v1/csv/upload-and-analyze","timestamp":"2025-04-13T02:24:15.906Z"}
+{"level":"warn","message":"No token provided","timestamp":"2025-04-13T02:24:15.911Z"}
+{"level":"info","message":"POST /api/v1/auth/login","timestamp":"2025-04-13T02:24:33.171Z"}
+{"level":"info","message":"User logged in successfully: cm9eaavd400006fixipf2ya76","timestamp":"2025-04-13T02:24:34.213Z"}
+{"level":"info","message":"POST /api/v1/csv/upload-and-analyze","timestamp":"2025-04-13T02:24:43.287Z"}
+{"level":"info","message":"GET /api/v1/users/me","timestamp":"2025-04-13T02:25:28.095Z"}
+{"level":"info","message":"GET /api/v1/users/me","timestamp":"2025-04-13T02:25:28.381Z"}
+{"level":"info","message":"POST /api/v1/auth/logout","timestamp":"2025-04-13T02:25:28.387Z"}
+{"level":"info","message":"POST /api/v1/auth/logout","timestamp":"2025-04-13T02:25:28.485Z"}
+{"level":"info","message":"POST /api/v1/csv/analyze","timestamp":"2025-04-13T02:25:37.555Z"}
+{"level":"warn","message":"No token provided","timestamp":"2025-04-13T02:25:37.557Z"}
+{"level":"info","message":"POST /api/v1/csv/analyze","timestamp":"2025-04-13T02:25:47.587Z"}
+{"level":"warn","message":"No token provided","timestamp":"2025-04-13T02:25:47.590Z"}
+{"level":"info","message":"POST /api/v1/auth/login","timestamp":"2025-04-13T02:25:55.527Z"}
+{"level":"info","message":"User logged in successfully: cm9eaavd400006fixipf2ya76","timestamp":"2025-04-13T02:25:55.797Z"}
+{"level":"info","message":"POST /api/v1/csv/analyze","timestamp":"2025-04-13T02:26:04.651Z"}
+{"level":"info","message":"GET /api/v1/users/me","timestamp":"2025-04-13T02:27:03.431Z"}
+{"level":"info","message":"GET /api/v1/users/me","timestamp":"2025-04-13T02:27:03.857Z"}
+{"level":"info","message":"POST /api/v1/auth/logout","timestamp":"2025-04-13T02:27:03.863Z"}
+{"level":"info","message":"POST /api/v1/auth/logout","timestamp":"2025-04-13T02:27:03.964Z"}
+{"level":"info","message":"POST /api/v1/csv/analyze","timestamp":"2025-04-13T02:27:10.895Z"}
+{"level":"warn","message":"No token provided","timestamp":"2025-04-13T02:27:10.936Z"}
+{"level":"info","message":"POST /api/v1/auth/login","timestamp":"2025-04-13T02:27:20.876Z"}
+{"level":"info","message":"POST /api/v1/auth/login","timestamp":"2025-04-13T02:27:34.682Z"}
+{"level":"info","message":"User logged in successfully: cm9eaavd400006fixipf2ya76","timestamp":"2025-04-13T02:27:34.875Z"}
+{"level":"info","message":"POST /api/v1/csv/analyze","timestamp":"2025-04-13T02:27:44.118Z"}
+{"columns":["name","city","rating","cost_for_two","cusine","online_order","table_reservation"],"level":"info","message":"CSV parsed successfully","recordCount":20,"timestamp":"2025-04-13T02:27:44.324Z"}
+{"analysis":{"columns":7,"recordCount":20},"level":"info","message":"CSV analysis completed","timestamp":"2025-04-13T02:27:44.326Z"}
+{"level":"info","message":"GET /api/v1/users/me","timestamp":"2025-04-13T02:28:24.752Z"}
+{"level":"info","message":"GET /api/v1/users/me","timestamp":"2025-04-13T02:28:25.004Z"}
+{"level":"info","message":"POST /api/v1/auth/logout","timestamp":"2025-04-13T02:28:25.009Z"}
+{"level":"info","message":"POST /api/v1/auth/logout","timestamp":"2025-04-13T02:28:25.104Z"}
+{"level":"info","message":"POST /api/v1/auth/login","timestamp":"2025-04-13T02:30:24.690Z"}
+{"level":"info","message":"User logged in successfully: cm9eaavd400006fixipf2ya76","timestamp":"2025-04-13T02:30:25.980Z"}
+{"level":"info","message":"POST /api/v1/csv/analyze","timestamp":"2025-04-13T02:30:36.381Z"}
+{"columns":["name","city","rating","cost_for_two","cusine","online_order","table_reservation"],"level":"info","message":"CSV parsed successfully","recordCount":20,"timestamp":"2025-04-13T02:30:37.231Z"}
+{"analysis":{"columns":7,"recordCount":20},"level":"info","message":"CSV analysis completed","timestamp":"2025-04-13T02:30:37.233Z"}
+{"level":"info","message":"GET /api/v1/users/me","timestamp":"2025-04-13T02:35:35.714Z"}
+{"level":"info","message":"GET /api/v1/users/me","timestamp":"2025-04-13T02:35:35.962Z"}
+{"level":"info","message":"POST /api/v1/auth/logout","timestamp":"2025-04-13T02:35:35.978Z"}
+{"level":"info","message":"POST /api/v1/auth/logout","timestamp":"2025-04-13T02:35:36.048Z"}
+{"level":"info","message":"GET /flash-sales/active","timestamp":"2025-04-13T02:39:45.332Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T02:39:45.381Z"}
+{"level":"info","message":"GET /products/Hoople%20Clock","timestamp":"2025-04-13T02:39:45.406Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T02:39:45.418Z"}
+{"level":"info","message":"GET /categories","timestamp":"2025-04-13T02:39:45.424Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T02:39:45.426Z"}
+{"level":"info","message":"GET /flash-sales/active","timestamp":"2025-04-13T02:39:45.427Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T02:39:45.434Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T02:39:45.434Z"}
+{"level":"info","message":"GET /categories","timestamp":"2025-04-13T02:39:45.434Z"}
+{"level":"info","message":"GET /products/Hoople%20Clock","timestamp":"2025-04-13T02:39:45.434Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T02:39:45.438Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T02:39:45.438Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T02:39:45.443Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T02:39:45.443Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T02:39:45.444Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T02:39:45.445Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T02:39:45.445Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T02:39:45.446Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T02:39:45.447Z"}
+{"level":"info","message":"POST /api/v1/generation","timestamp":"2025-04-13T02:39:53.222Z"}
+{"level":"info","message":"POST /api/v1/auth/login","timestamp":"2025-04-13T02:40:14.092Z"}
+{"level":"info","message":"User logged in successfully: cm9eaavd400006fixipf2ya76","timestamp":"2025-04-13T02:40:15.094Z"}
+{"level":"info","message":"POST /api/v1/generation","timestamp":"2025-04-13T02:40:20.647Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-13T02:42:09.920Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-13T02:42:09.951Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-13T02:42:10.178Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-13T02:42:10.448Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-13T02:43:30.227Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-13T02:43:30.253Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-13T02:43:30.690Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-13T02:43:31.096Z"}
+{"level":"info","message":"POST /api/v1/generation","timestamp":"2025-04-13T02:43:44.823Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T02:43:56.176Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1200,"temperature":0.7},"prompt":"Write a short story about a robot learning to paint","timestamp":"2025-04-13T02:43:58.327Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T02:43:58.329Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"GET /api/v1/generations","timestamp":"2025-04-13T02:43:59.381Z"}
+{"level":"info","limit":10,"message":"Getting generations:","page":1,"timestamp":"2025-04-13T02:43:59.473Z"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1200,"temperature":0.7},"timestamp":"2025-04-13T02:43:59.999Z"}
+{"generationId":"cm9f1jmjy0000o2istd0g61op","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T02:44:06.998Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T02:46:39.686Z"}
+{"level":"warn","message":"No token provided","timestamp":"2025-04-13T02:46:39.697Z"}
+{"level":"info","message":"POST /api/v1/auth/login","timestamp":"2025-04-13T02:46:49.228Z"}
+{"level":"info","message":"User logged in successfully: cm9eaavd400006fixipf2ya76","timestamp":"2025-04-13T02:46:50.267Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T02:46:54.592Z"}
+{"level":"warn","message":"Validation Error:","timestamp":"2025-04-13T02:46:54.793Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-13T02:48:35.427Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-13T02:48:35.452Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-13T02:48:35.749Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-13T02:48:36.105Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T02:55:31.306Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T02:55:33.332Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T02:55:33.332Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T02:55:34.804Z"}
+{"generationId":"cm9f1yirp0000gfug75z8z247","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T02:55:38.706Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T02:55:43.424Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T02:55:43.527Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T02:55:43.527Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T02:55:43.989Z"}
+{"generationId":"cm9f1yq3s0003gfug6668y3ms","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T02:55:46.202Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T02:55:52.387Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T02:55:52.578Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T02:55:52.578Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T02:55:53.134Z"}
+{"generationId":"cm9f1yx5t0006gfugndbxoe0j","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T02:55:55.319Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T02:56:02.296Z"}
+{"level":"info","message":"Creating generation:","model":"claude-3-sonnet","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T02:56:02.405Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"claude-3-sonnet","timestamp":"2025-04-13T02:56:02.405Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"claude-3-sonnet","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T02:56:02.873Z"}
+{"generationId":"cm9f1z4o60009gfugy5x50ba8","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T02:56:05.054Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-13T03:05:11.317Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-13T03:05:11.330Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-13T03:05:11.445Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-13T03:05:11.664Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-13T03:05:16.712Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-13T03:05:16.714Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-13T03:05:16.757Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-13T03:05:16.795Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-13T03:05:20.603Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-13T03:05:20.605Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-13T03:05:20.635Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-13T03:05:20.673Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-13T03:08:36.133Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-13T03:08:36.143Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-13T03:08:36.206Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-13T03:08:36.397Z"}
+{"level":"info","message":"GET /flash-sales/active","timestamp":"2025-04-13T03:21:53.330Z"}
+{"level":"info","message":"GET /products/Hoople%20Clock","timestamp":"2025-04-13T03:21:53.338Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T03:21:53.342Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T03:21:53.346Z"}
+{"level":"info","message":"GET /flash-sales/active","timestamp":"2025-04-13T03:21:53.347Z"}
+{"level":"info","message":"GET /products/Hoople%20Clock","timestamp":"2025-04-13T03:21:53.348Z"}
+{"level":"info","message":"GET /categories","timestamp":"2025-04-13T03:21:53.348Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T03:21:53.353Z"}
+{"level":"info","message":"GET /categories","timestamp":"2025-04-13T03:21:53.358Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T03:21:53.359Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T03:21:53.372Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T03:21:53.381Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T03:21:53.386Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T03:21:53.390Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T03:21:53.392Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T03:21:53.392Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T03:21:53.393Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T03:21:53.394Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T03:21:53.395Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T03:21:53.401Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T04:24:34.074Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T04:24:36.395Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T04:24:36.395Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T04:24:37.850Z"}
+{"generationId":"cm9f551hc0000msplhmgyjp7i","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T04:24:40.490Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T04:25:10.595Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"robot learning to paint","timestamp":"2025-04-13T04:25:11.028Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T04:25:11.028Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T04:25:12.257Z"}
+{"generationId":"cm9f55rtp0003mspl0gp83ssd","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T04:25:21.262Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T04:27:57.167Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"generate image","timestamp":"2025-04-13T04:27:57.445Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T04:27:57.446Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T04:27:58.009Z"}
+{"generationId":"cm9f59c6b0006msplztp1ajyg","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T04:28:01.470Z"}
+{"level":"info","message":"GET /flash-sales/active","timestamp":"2025-04-13T04:30:29.437Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T04:30:29.441Z"}
+{"level":"info","message":"GET /products/Hoople%20Clock","timestamp":"2025-04-13T04:30:29.443Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T04:30:29.444Z"}
+{"level":"info","message":"GET /categories","timestamp":"2025-04-13T04:30:29.455Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T04:30:29.459Z"}
+{"level":"info","message":"GET /products/Hoople%20Clock","timestamp":"2025-04-13T04:30:29.460Z"}
+{"level":"info","message":"GET /flash-sales/active","timestamp":"2025-04-13T04:30:29.461Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T04:30:29.480Z"}
+{"level":"info","message":"GET /categories","timestamp":"2025-04-13T04:30:29.480Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T04:30:29.480Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T04:30:29.482Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T04:30:29.484Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T04:30:29.484Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T04:30:29.486Z"}
+{"level":"info","message":"GET /all-categories","timestamp":"2025-04-13T04:30:29.486Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T04:30:29.486Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T04:30:29.487Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T04:30:29.488Z"}
+{"level":"info","message":"GET /products","timestamp":"2025-04-13T04:30:29.489Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T04:47:27.552Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T04:47:29.083Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T04:47:29.084Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T04:47:30.618Z"}
+{"generationId":"cm9f5ygnt0009msplrxb3pq03","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T04:47:33.342Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T04:48:14.786Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"give code","timestamp":"2025-04-13T04:48:14.983Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T04:48:14.983Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T04:48:15.513Z"}
+{"generationId":"cm9f5zfmw000cmsplko1n5wce","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T04:48:19.375Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T04:48:41.136Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"generate image","timestamp":"2025-04-13T04:48:41.334Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T04:48:41.334Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T04:48:41.911Z"}
+{"generationId":"cm9f5zzyq000fmsplxm1js89m","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T04:48:44.593Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-13T05:04:33.572Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-13T05:04:33.574Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-13T05:04:33.619Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-13T05:04:33.692Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:07:07.545Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T05:07:11.637Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T05:07:11.638Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:07:18.394Z"}
+{"generationId":"cm9f6ntzk0000gvhvsl0ze0t9","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:07:23.433Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:07:36.300Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"eripuka","timestamp":"2025-04-13T05:07:36.489Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T05:07:36.490Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:07:38.413Z"}
+{"generationId":"cm9f6oc6y0003gvhvvlnx9ek5","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:07:41.686Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:11:21.970Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"h","timestamp":"2025-04-13T05:11:22.198Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T05:11:22.198Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:11:22.783Z"}
+{"generationId":"cm9f6t60b0006gvhvt4p2npfx","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:11:25.000Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:11:34.785Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"h","timestamp":"2025-04-13T05:11:34.899Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T05:11:34.900Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:11:35.327Z"}
+{"generationId":"cm9f6tfqt0009gvhv6s55zmki","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:11:37.687Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:11:44.672Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"h","timestamp":"2025-04-13T05:11:44.851Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T05:11:44.852Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:11:45.273Z"}
+{"generationId":"cm9f6tnf9000cgvhvm8oue5sa","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:11:47.494Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:15:47.338Z"}
+{"level":"warn","message":"No token provided","timestamp":"2025-04-13T05:15:47.338Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:18:11.829Z"}
+{"level":"warn","message":"No token provided","timestamp":"2025-04-13T05:18:11.830Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:18:13.557Z"}
+{"level":"warn","message":"No token provided","timestamp":"2025-04-13T05:18:13.557Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:20:45.614Z"}
+{"level":"info","message":"Creating generation:","model":"claude-3-sonnet","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"h","timestamp":"2025-04-13T05:20:47.363Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"claude-3-sonnet","timestamp":"2025-04-13T05:20:47.364Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"claude-3-sonnet","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:20:48.596Z"}
+{"generationId":"cm9f75agw000fgvhvmum4n8fs","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:20:51.238Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:20:53.858Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"h","timestamp":"2025-04-13T05:20:53.957Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T05:20:53.957Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:20:54.357Z"}
+{"generationId":"cm9f75f46000igvhv1kb32n8u","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:20:55.157Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:29:34.675Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T05:29:36.713Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T05:29:36.713Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:29:38.046Z"}
+{"generationId":"cm9f7gmyh000lgvhvy86shw0v","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:29:40.631Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:30:17.606Z"}
+{"level":"info","message":"Creating generation:","model":"claude-3-sonnet","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T05:30:17.839Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"claude-3-sonnet","timestamp":"2025-04-13T05:30:17.839Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"claude-3-sonnet","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:30:18.344Z"}
+{"generationId":"cm9f7hi9v000ogvhv7abda0kk","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:30:20.466Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:30:30.957Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T05:30:31.052Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T05:30:31.053Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:30:31.499Z"}
+{"generationId":"cm9f7hsel000rgvhvh5ftaqw9","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:30:33.898Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:30:39.343Z"}
+{"level":"info","message":"Creating generation:","model":"claude-3-opus","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T05:30:39.520Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"claude-3-opus","timestamp":"2025-04-13T05:30:39.520Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"claude-3-opus","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:30:39.945Z"}
+{"generationId":"cm9f7hyxt000ugvhvrlpprqfi","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:30:42.158Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:30:53.852Z"}
+{"level":"warn","message":"No token provided","timestamp":"2025-04-13T05:30:53.853Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:31:03.520Z"}
+{"level":"info","message":"Creating generation:","model":"claude-3-opus","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T05:31:03.972Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"claude-3-opus","timestamp":"2025-04-13T05:31:03.973Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"claude-3-opus","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:31:05.036Z"}
+{"generationId":"cm9f7ihxr000xgvhvvb4j9lz0","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:31:07.149Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:31:16.663Z"}
+{"level":"info","message":"Creating generation:","model":"claude-3-opus","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T05:31:16.762Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"claude-3-opus","timestamp":"2025-04-13T05:31:16.762Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"claude-3-opus","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:31:17.188Z"}
+{"generationId":"cm9f7iroc0010gvhvvda5ztxv","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:31:19.380Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:31:45.295Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T05:31:45.476Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-13T05:31:45.476Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:31:45.981Z"}
+{"generationId":"cm9f7jdw80013gvhvq4xvrp4q","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:31:48.241Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:37:54.148Z"}
+{"level":"info","message":"Creating generation:","model":"gemini-2.0-flashstable-diffusion-xl-1024-v1-0","parameters":{"max_tokens":1200,"temperature":0.7},"prompt":"Write a short story about a robot learning to paint","timestamp":"2025-04-13T05:37:55.474Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"gemini-2.0-flashstable-diffusion-xl-1024-v1-0","timestamp":"2025-04-13T05:37:55.475Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Generating image with Stability AI","model":"gemini-2.0-flashstable-diffusion-xl-1024-v1-0","parameters":{"max_tokens":1200,"temperature":0.7},"timestamp":"2025-04-13T05:37:56.785Z"}
+{"generationId":"cm9f7rbsq0016gvhvlm1j538v","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:38:07.172Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:38:28.789Z"}
+{"level":"info","message":"Creating generation:","model":"stable-diffusion-xl-1024-v1-0","parameters":{"max_tokens":1200,"temperature":0.7},"prompt":"Write a short story about a robot learning to paint","timestamp":"2025-04-13T05:38:28.966Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"stable-diffusion-xl-1024-v1-0","timestamp":"2025-04-13T05:38:28.966Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Generating image with Stability AI","model":"stable-diffusion-xl-1024-v1-0","parameters":{"max_tokens":1200,"temperature":0.7},"timestamp":"2025-04-13T05:38:29.471Z"}
+{"generationId":"cm9f7s1890019gvhv5zhzmbl6","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:38:38.838Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:38:39.368Z"}
+{"level":"warn","message":"No token provided","timestamp":"2025-04-13T05:38:39.372Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:38:52.636Z"}
+{"level":"info","message":"Creating generation:","model":"claude-3-sonnet","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"hlo","timestamp":"2025-04-13T05:38:52.833Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"claude-3-sonnet","timestamp":"2025-04-13T05:38:52.833Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"claude-3-sonnet","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:38:53.328Z"}
+{"generationId":"cm9f7sjn9001cgvhvuwjb5yqp","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:38:55.650Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:44:03.862Z"}
+{"level":"warn","message":"No token provided","timestamp":"2025-04-13T05:44:03.870Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:44:43.393Z"}
+{"level":"warn","message":"No token provided","timestamp":"2025-04-13T05:44:43.395Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:45:31.588Z"}
+{"level":"info","message":"Creating generation:","model":"stable-diffusion-xl-1024-v1-0","parameters":{"max_tokens":1200,"temperature":0.7},"prompt":"Write a short story about a robot learning to paint","timestamp":"2025-04-13T05:45:33.685Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"stable-diffusion-xl-1024-v1-0","timestamp":"2025-04-13T05:45:33.685Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Generating image with Stability AI","model":"stable-diffusion-xl-1024-v1-0","parameters":{"max_tokens":1200,"temperature":0.7},"timestamp":"2025-04-13T05:45:34.956Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:45:35.259Z"}
+{"level":"info","message":"Creating generation:","model":"stable-diffusion-xl-1024-v1-0","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"h","timestamp":"2025-04-13T05:45:35.352Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"stable-diffusion-xl-1024-v1-0","timestamp":"2025-04-13T05:45:35.352Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Generating image with Stability AI","model":"stable-diffusion-xl-1024-v1-0","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:45:35.761Z"}
+{"generationId":"cm9f815cb001fgvhvwz2zs0iw","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:45:45.699Z"}
+{"generationId":"cm9f81661001ggvhvyep5zhvq","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:45:46.990Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:47:40.082Z"}
+{"level":"warn","message":"No token provided","timestamp":"2025-04-13T05:47:40.085Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:50:07.172Z"}
+{"level":"info","message":"Creating generation:","model":"stable-diffusion-xl-1024-v1-0","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"h","timestamp":"2025-04-13T05:50:07.615Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"stable-diffusion-xl-1024-v1-0","timestamp":"2025-04-13T05:50:07.615Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Generating image with Stability AI","model":"stable-diffusion-xl-1024-v1-0","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:50:09.192Z"}
+{"generationId":"cm9f870da001lgvhv0p3tby6s","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:50:18.209Z"}
+{"level":"info","message":"POST /api/v1/generations","timestamp":"2025-04-13T05:50:32.225Z"}
+{"level":"info","message":"Creating generation:","model":"stable-diffusion-xl-1024-v1-0","parameters":{"max_tokens":1000,"temperature":0.7},"prompt":"cat images","timestamp":"2025-04-13T05:50:32.416Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Creating generation record","model":"stable-diffusion-xl-1024-v1-0","timestamp":"2025-04-13T05:50:32.417Z","userId":"cm9eaavd400006fixipf2ya76"}
+{"level":"info","message":"Generating image with Stability AI","model":"stable-diffusion-xl-1024-v1-0","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-13T05:50:32.916Z"}
+{"generationId":"cm9f87jgc001ogvhvogfk3r73","level":"info","message":"Generation created successfully:","timestamp":"2025-04-13T05:50:40.107Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-13T05:53:10.943Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-13T05:53:10.944Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-13T05:53:10.986Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-13T05:53:11.059Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-13T06:09:33.591Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-13T06:09:33.593Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-13T06:09:33.641Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-13T06:09:33.759Z"}
+{"level":"info","message":"POST /api/v1/auth/login","timestamp":"2025-04-13T06:09:58.722Z"}
+{"level":"info","message":"POST /api/v1/auth/login","timestamp":"2025-04-13T06:10:11.216Z"}
+{"level":"info","message":"POST /api/v1/auth/login","timestamp":"2025-04-13T06:11:08.260Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-13T06:12:16.480Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-13T06:12:16.491Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-13T06:12:16.537Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-13T06:12:16.662Z"}

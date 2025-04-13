@@ -61,8 +61,6 @@ model User {
   apiKeyLastUsed DateTime?
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
-
-  // Relations
   datasets      Dataset[]
   prompts       Prompt[]
   generations   Generation[]
@@ -83,8 +81,6 @@ model Dataset {
   isPublic    Boolean    @default(false)
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
-
-  // Relations
   userId      String
   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   analytics   Analytics[]
@@ -99,23 +95,21 @@ model Prompt {
   name        String
   description String?
   content     String      @db.Text
-  category    String?     // Changed from tags to category to match controller
+  category    String?
   type        PromptType  @default(TEXT)
-  template    String?     // Added as a string field to match controller
-  tags        String[]    // Kept but may not be used in controller
+  template    String?
+  tags        String[]
   metadata    Json?      @default("{}")
   isPublic    Boolean    @default(false)
   version     Int        @default(1)
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
-
-  // Relations
   userId      String
   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   generations Generation[]
   analytics   Analytics[]
   datasets    Dataset[]  @relation("DatasetPrompts")
-  templateRef Template?  @relation(fields: [templateId], references: [id])  // Renamed to avoid conflict with template string field
+  templateRef Template?  @relation(fields: [templateId], references: [id])
   templateId  String?
 
   @@index([userId])
@@ -126,10 +120,10 @@ model Prompt {
 model Generation {
   id          String           @id @default(cuid())
   prompt      String          @db.Text
-  content     String?         @db.Text  // Added field to match controller
-  model       String?         // Made optional as it's not in controller
+  content     String?         @db.Text
+  model       String?
   parameters  Json?           @default("{}")
-  result      String?        @db.Text  // Kept for backward compatibility
+  result      String?        @db.Text
   status      GenerationStatus @default(COMPLETED)
   error       String?        @db.Text
   metadata    Json?          @default("{}")
@@ -137,13 +131,12 @@ model Generation {
   endTime     DateTime?
   createdAt   DateTime       @default(now())
   updatedAt   DateTime       @updatedAt
-  templateId  String?        // Added field to match controller
+  templateId  String? 
 
-  // Relations
   userId      String
   user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   promptId    String?
-  promptRef   Prompt?        @relation(fields: [promptId], references: [id])  // Renamed to avoid field name conflict
+  promptRef   Prompt?        @relation(fields: [promptId], references: [id])
   templateRef Template?      @relation(fields: [templateId], references: [id])
   analytics   Analytics[]
 
@@ -166,7 +159,6 @@ model Template {
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 
-  // Relations
   userId      String
   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   prompts     Prompt[]
@@ -184,7 +176,6 @@ model Analytics {
   metadata    Json?          @default("{}")
   createdAt   DateTime       @default(now())
 
-  // Relations
   userId      String
   user        User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   datasetId   String?

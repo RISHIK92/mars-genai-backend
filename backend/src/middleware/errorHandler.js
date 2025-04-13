@@ -8,7 +8,6 @@ const errorHandler = (err, req, res, next) => {
     method: req.method,
   });
 
-  // Handle Prisma errors
   if (err.code === 'P2002') {
     return res.status(409).json({
       error: 'Unique constraint violation',
@@ -22,7 +21,6 @@ const errorHandler = (err, req, res, next) => {
     });
   }
 
-  // Handle JWT errors
   if (err.name === 'JsonWebTokenError') {
     return res.status(401).json({
       error: 'Invalid token',
@@ -35,7 +33,6 @@ const errorHandler = (err, req, res, next) => {
     });
   }
 
-  // Handle validation errors
   if (err.name === 'ValidationError') {
     return res.status(400).json({
       error: 'Validation error',
@@ -43,7 +40,6 @@ const errorHandler = (err, req, res, next) => {
     });
   }
 
-  // Default error
   res.status(err.status || 500).json({
     error: err.message || 'Internal server error',
   });

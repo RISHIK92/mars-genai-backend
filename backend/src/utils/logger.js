@@ -18,7 +18,6 @@ const logger = winston.createLogger({
   ],
 });
 
-// Create a stream object for Morgan
 logger.stream = {
   write: (message) => {
     logger.info(message.trim());

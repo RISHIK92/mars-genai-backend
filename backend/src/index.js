@@ -63,7 +63,7 @@ app.use((err, req, res, next) => {
   logger.error('Error:', err);
   res.status(err.status || 500).json({
     error: 'Internal Server Error',
-    message: err.message,
+    message: err.message, 
   });
 });
 
