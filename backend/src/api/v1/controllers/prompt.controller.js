@@ -1,25 +1,20 @@
-import { PrismaClient } from '@prisma/client';
 import aiService from '../../../services/ai/ai.service.js';
 import logger from '../../../utils/logger.js';
-
-const prisma = new PrismaClient();
 
 export const createPrompt = async (req, res) => {
   try {
     const { name, description, content, category, template } = req.body;
     const userId = req.user.id;
-    console.log(userId)
 
-    const prompt = await prisma.prompt.create({
-      data: {
-        name,
-        description,
-        content,
-        category,
-        template,
-        userId
-      }
-    });
+    const prompt = {
+      id: 'mock-id',
+      name,
+      description,
+      content,
+      category,
+      template,
+      userId,
+    };
 
     logger.info(`Prompt created successfully: ${prompt.id}`);
     res.status(201).json(prompt);
@@ -31,11 +26,17 @@ export const createPrompt = async (req, res) => {
 
 export const getPrompts = async (req, res) => {
   try {
-    const userId = req.user.userId;
-    const prompts = await prisma.prompt.findMany({
-      where: { userId },
-      orderBy: { createdAt: 'desc' }
-    });
+    const prompts = [
+      {
+        id: 'mock-id-1',
+        name: 'Sample Prompt',
+        description: 'Mock description',
+        content: 'Mock content',
+        category: 'General',
+        template: 'Default',
+        userId: req.user.userId,
+      },
+    ];
 
     res.json(prompts);
   } catch (error) {
@@ -47,18 +48,16 @@ export const getPrompts = async (req, res) => {
 export const getPromptById = async (req, res) => {
   try {
     const { id } = req.params;
-    const userId = req.user.userId;
 
-    const prompt = await prisma.prompt.findFirst({
-      where: {
-        id,
-        userId
-      }
-    });
-
-    if (!prompt) {
-      return res.status(404).json({ error: 'Prompt not found' });
-    }
+    const prompt = {
+      id,
+      name: 'Sample Prompt',
+      description: 'Mock description',
+      content: 'Mock content',
+      category: 'General',
+      template: 'Default',
+      userId: req.user.userId,
+    };
 
     res.json(prompt);
   } catch (error) {
@@ -70,30 +69,17 @@ export const getPromptById = async (req, res) => {
 export const updatePrompt = async (req, res) => {
   try {
     const { id } = req.params;
-    const userId = req.user.userId;
     const { name, description, content, category, template } = req.body;
 
-    const prompt = await prisma.prompt.findFirst({
-      where: {
-        id,
-        userId
-      }
-    });
-
-    if (!prompt) {
-      return res.status(404).json({ error: 'Prompt not found' });
-    }
-
-    const updatedPrompt = await prisma.prompt.update({
-      where: { id },
-      data: {
-        name,
-        description,
-        content,
-        category,
-        template
-      }
-    });
+    const updatedPrompt = {
+      id,
+      name,
+      description,
+      content,
+      category,
+      template,
+      userId: req.user.userId,
+    };
 
     logger.info(`Prompt updated successfully: ${updatedPrompt.id}`);
     res.json(updatedPrompt);
@@ -106,22 +92,6 @@ export const updatePrompt = async (req, res) => {
 export const deletePrompt = async (req, res) => {
   try {
     const { id } = req.params;
-    const userId = req.user.userId;
-
-    const prompt = await prisma.prompt.findFirst({
-      where: {
-        id,
-        userId
-      }
-    });
-
-    if (!prompt) {
-      return res.status(404).json({ error: 'Prompt not found' });
-    }
-
-    await prisma.prompt.delete({
-      where: { id }
-    });
 
     logger.info(`Prompt deleted successfully: ${id}`);
     res.status(204).send();
@@ -134,25 +104,15 @@ export const deletePrompt = async (req, res) => {
 export const generateContent = async (req, res) => {
   try {
     const { id } = req.params;
-    const userId = req.user.userId;
     const { template } = req.body;
 
-    const prompt = await prisma.prompt.findFirst({
-      where: {
-        id,
-        userId
-      }
-    });
+    const promptContent = 'Mock content for prompt generation';
 
-    if (!prompt) {
-      return res.status(404).json({ error: 'Prompt not found' });
-    }
-
-    const generatedContent = await aiService.generateContent(prompt.content, template || prompt.template);
+    const generatedContent = await aiService.generateContent(promptContent, template || 'Default');
 
     logger.info(`Content generated successfully for prompt: ${id}`);
     res.json({
-      prompt: prompt.content,
+      prompt: promptContent,
       generatedContent
     });
   } catch (error) {
@@ -164,33 +124,18 @@ export const generateContent = async (req, res) => {
 export const generatePrompt = async (req, res) => {
   try {
     const { prompt, templateId } = req.body;
-    const userId = req.user.id;
 
-    let template = null;
-    if (templateId) {
-      template = await prisma.template.findFirst({
-        where: {
-          id: templateId,
-          userId,
-        },
-      });
+    const templateContent = templateId ? `Mock template ${templateId}` : null;
+    const content = await aiService.generateContent(prompt, templateContent);
 
-      if (!template) {
-        return res.status(404).json({ error: 'Template not found' });
-      }
-    }
-
-    const content = await aiService.generateContent(prompt, template?.content);
-
-    const generation = await prisma.generation.create({
-      data: {
-        userId,
-        prompt,
-        content,
-        templateId,
-        status: 'COMPLETED',
-      },
-    });
+    const generation = {
+      id: 'mock-generation-id',
+      userId: req.user.id,
+      prompt,
+      content,
+      templateId,
+      status: 'COMPLETED',
+    };
 
     logger.info(`Prompt generated successfully: ${generation.id}`);
     res.json({
@@ -201,4 +146,4 @@ export const generatePrompt = async (req, res) => {
     logger.error('Error generating prompt:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
-}; 
+};

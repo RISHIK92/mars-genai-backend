@@ -5,7 +5,6 @@ import helmet from 'helmet';
 import dotenv from 'dotenv';
 import logger from './utils/logger.js';
 
-// Import routes
 import authRoutes from './api/v1/auth/routes.js';
 import templateRoutes from './api/v1/templates/routes.js';
 import datasetRoutes from './api/v1/datasets/routes.js';
@@ -18,26 +17,22 @@ dotenv.config();
 
 const app = express();
 
-// Security middleware
 app.use(helmet());
 
-// Rate limiting
 const limiter = rateLimit({
   windowMs: process.env.RATE_LIMIT_WINDOW_MS || 15 * 60 * 1000, // 15 minutes
   max: process.env.RATE_LIMIT_MAX_REQUESTS || 100, // limit each IP to 100 requests per windowMs
 });
 app.use(limiter);
 
-// CORS configuration
 app.use(cors({
-  origin: 'http://localhost:3001',
+  origin: ['http://localhost:3001','https://mars-genai.vercel.app'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   exposedHeaders: ['Content-Range', 'X-Content-Range'],
 }));
 
-// Body parsing middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

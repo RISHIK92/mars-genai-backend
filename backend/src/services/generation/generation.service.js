@@ -1,89 +1,71 @@
-import { PrismaClient } from '@prisma/client';
 import aiService from '../ai/ai.service.js';
 import logger from '../../utils/logger.js';
 import Queue from 'bull';
 const generationQueue = new Queue('generation', process.env.REDIS_URL);
 
-const prisma = new PrismaClient();
+const generations = [];
+const analytics = [];
 
 class GenerationService {
   async createGeneration(userId, { prompt, model, parameters }) {
     try {
-      if (!userId) {
-        throw new Error('User ID is required');
-      }
+      if (!userId) throw new Error('User ID is required');
 
       logger.info('Creating generation record', { userId, model });
 
-      const generation = await prisma.generation.create({
-        data: {
-          prompt,
-          model,
-          parameters,
-          status: 'PENDING',
-          startTime: new Date(),
-          user: {
-            connect: { id: userId }
-          }
-        }
-      });
+      const generation = {
+        id: `${Date.now()}-${Math.random().toString(36).substring(2)}`,
+        prompt,
+        model,
+        parameters,
+        status: 'PENDING',
+        startTime: new Date(),
+        userId,
+      };
+
+      generations.push(generation);
 
       try {
         const result = await aiService.generateContent(prompt, model, parameters);
 
-        const updatedGeneration = await prisma.generation.update({
-          where: { id: generation.id },
-          data: {
-            content: result.content,
-            result: result.result,
-            status: 'COMPLETED',
-            endTime: new Date(),
-            metadata: result.metadata || {}
+        generation.content = result.content;
+        generation.result = result.result;
+        generation.status = 'COMPLETED';
+        generation.endTime = new Date();
+        generation.metadata = result.metadata || {};
+
+        analytics.push({
+          type: 'GENERATION',
+          action: 'GENERATE',
+          userId,
+          generationId: generation.id,
+          tokensUsed: 0,
+          cost: 0,
+          metadata: {
+            model,
+            parameters,
+            promptLength: prompt.length,
           }
         });
 
-        await prisma.analytics.create({
-          data: {
-            type: 'GENERATION',
-            action: 'GENERATE',
-            userId: userId,
-            generationId: generation.id,
-            tokensUsed: 0,
-            cost: 0,
-            metadata: {
-              model: model,
-              parameters: parameters,
-              promptLength: prompt.length
-            }
-          }
-        });
-
-        return updatedGeneration;
+        return generation;
       } catch (error) {
-        logger.error('AI generation failed:', error);
-        await prisma.generation.update({
-          where: { id: generation.id },
-          data: {
-            status: 'FAILED',
-            error: error.message,
-            endTime: new Date()
-          }
-        });
+        generation.status = 'FAILED';
+        generation.error = error.message;
+        generation.endTime = new Date();
 
-        await prisma.analytics.create({
-          data: {
-            type: 'GENERATION',
-            action: 'GENERATE',
-            userId: userId,
-            generationId: generation.id,
-            tokensUsed: 0,
-            cost: 0,
-            metadata: {
-              model: model,
-              parameters: parameters,
-              promptLength: prompt.length,
-              error: error.message
-            }
+        analytics.push({
+          type: 'GENERATION',
+          action: 'GENERATE',
+          userId,
+          generationId: generation.id,
+          tokensUsed: 0,
+          cost: 0,
+          metadata: {
+            model,
+            parameters,
+            promptLength: prompt.length,
+            error: error.message,
           }
         });
 
@@ -97,42 +79,18 @@ class GenerationService {
 
   async getGenerations(userId, page = 1, limit = 10) {
     try {
-      if (!userId) {
-        throw new Error('User ID is required');
-      }
+      if (!userId) throw new Error('User ID is required');
 
-      const skip = (page - 1) * limit;
-
-      const [generations, total] = await Promise.all([
-        prisma.generation.findMany({
-          where: {
-            user: {
-              id: userId
-            }
-          },
-          orderBy: {
-            createdAt: 'desc'
-          },
-          skip,
-          take: limit
-        }),
-        prisma.generation.count({
-          where: {
-            user: {
-              id: userId
-            }
-          }
-        })
-      ]);
+      const userGenerations = generations.filter(g => g.userId === userId);
+      const total = userGenerations.length;
+      const totalPages = Math.ceil(total / limit);
+      const paginated = userGenerations
+        .sort((a, b) => new Date(b.startTime) - new Date(a.startTime))
+        .slice((page - 1) * limit, page * limit);
 
       return {
-        generations,
-        pagination: {
-          total,
-          page,
-          limit,
-          totalPages: Math.ceil(total / limit)
-        }
+        generations: paginated,
+        pagination: { total, page, limit, totalPages }
       };
     } catch (error) {
       logger.error('Error in getGenerations:', error);
@@ -142,22 +100,10 @@ class GenerationService {
 
   async getGenerationById(userId, generationId) {
     try {
-      if (!userId) {
-        throw new Error('User ID is required');
-      }
+      if (!userId) throw new Error('User ID is required');
 
-      const generation = await prisma.generation.findFirst({
-        where: {
-          id: generationId,
-          user: {
-            id: userId
-          }
-        }
-      });
-
-      if (!generation) {
-        throw new Error('Generation not found');
-      }
+      const generation = generations.find(g => g.id === generationId && g.userId === userId);
+      if (!generation) throw new Error('Generation not found');
 
       return generation;
     } catch (error) {
@@ -167,4 +113,4 @@ class GenerationService {
   }
 }
 
-export default new GenerationService(); 
+export default new GenerationService();

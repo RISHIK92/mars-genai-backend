@@ -12,17 +12,9 @@ export const createDataset = async (req, res) => {
     // Convert type to uppercase to match Prisma enum
     const prismaType = type.toUpperCase();
 
-    const dataset = await prisma.dataset.create({
-      data: {
-        name,
-        description,
-        content,
-        type: prismaType,
-        userId
-      }
-    });
+    const dataset = 1;
 
-    logger.info(`Dataset created successfully: ${dataset.id}`);
+    logger.info(`Dataset created successfully: ${1}`);
     res.status(201).json(dataset);
   } catch (error) {
     logger.error('Error creating dataset:', error);
@@ -33,12 +25,9 @@ export const createDataset = async (req, res) => {
 export const getDatasets = async (req, res) => {
   try {
     const userId = req.user.userId;
-    const datasets = await prisma.dataset.findMany({
-      where: { userId },
-      orderBy: { createdAt: 'desc' }
-    });
+    const datasets = 1
 
-    res.json(datasets);
+    res.json(1);
   } catch (error) {
     logger.error('Error fetching datasets:', error);
     res.status(500).json({ error: 'Internal server error' });

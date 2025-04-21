@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 
 export const register = async (req, res) => {
   try {
-    const { email, password, name } = req.body;
+    const { email, password } = req.body;
 
     // Check if user already exists
     const existingUser = await prisma.user.findUnique({
@@ -26,7 +26,6 @@ export const register = async (req, res) => {
       data: {
         email,
         password: hashedPassword,
-        name,
       },
     });
 
@@ -38,7 +37,7 @@ export const register = async (req, res) => {
     );
 
     logger.info(`User registered successfully: ${user.id}`);
-    res.status(201).json({ token, user: { id: user.id, email: user.email, name: user.name } });
+    res.status(201).json({ token, user: { id: user.id, email: user.email } });
   } catch (error) {
     logger.error('Error in register:', error);
     res.status(500).json({ error: 'Internal server error' });

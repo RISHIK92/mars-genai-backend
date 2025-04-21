@@ -81,4 +81,4 @@ class CSVController {
   }
 }
 
-export default new CSVController(); 
+export default new CSVController();
