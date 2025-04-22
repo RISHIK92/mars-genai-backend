@@ -1,18 +1,25 @@
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs';
 import logger from '../utils/logger.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Try to resolve the .env path (usually root-level)
 const envPath = path.resolve(process.cwd(), '.env');
-logger.info('Loading environment variables from:', { envPath });
 
-const result = dotenv.config({ path: envPath });
-if (result.error) {
-  logger.error('Error loading .env file:', result.error);
-  throw result.error;
+// Check if file exists before loading
+if (fs.existsSync(envPath)) {
+  logger.info('Loading environment variables from:', { envPath });
+  const result = dotenv.config({ path: envPath });
+  if (result.error) {
+    logger.error('Error loading .env file:', result.error);
+    throw result.error;
+  }
+} else {
+  logger.warn('No .env file found at', envPath, '- relying on process.env (Render?)');
 }
 
 logger.info('Environment variables loaded:', {
@@ -36,11 +43,12 @@ const config = {
   logLevel: process.env.LOG_LEVEL || 'info',
   rateLimitWindowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000'),
   rateLimitMaxRequests: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '100'),
-  corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  corsOrigin: process.env.CORS_ORIGIN || '*', // default to wildcard if needed
   analyticsEnabled: process.env.ANALYTICS_ENABLED === 'true',
   bcryptSaltRounds: parseInt(process.env.BCRYPT_SALT_ROUNDS || '10'),
 };
 
+// Validate required environment variables
 const requiredEnvVarsMap = {
   GEMINI_API_KEY: config.geminiApiKey,
   JWT_SECRET: config.jwtSecret,

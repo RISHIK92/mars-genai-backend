@@ -2357,3 +2357,8 @@
 {"level":"info","message":"Creating generation record","model":"gemini-2.0-flash","timestamp":"2025-04-21T20:20:17.251Z","userId":"cm9risdrd0000ax405liecux1"}
 {"hasApiKey":true,"level":"info","message":"Generating content with Gemini","model":"gemini-2.0-flash","parameters":{"max_tokens":1000,"temperature":0.7},"timestamp":"2025-04-21T20:20:17.252Z"}
 {"generationId":"1745266817252-rqhzm8tb2q","level":"info","message":"Generation created successfully:","timestamp":"2025-04-21T20:20:19.356Z"}
+{"envPath":"/Users/rishikchowdarykaruturi/mars-genai-backend-1/backend/.env","level":"info","message":"Loading environment variables from:","timestamp":"2025-04-22T03:38:17.100Z"}
+{"NODE_ENV":"development","PORT":"3000","hasDbUrl":true,"hasGeminiKey":true,"hasJwtSecret":true,"level":"info","message":"Environment variables loaded:","timestamp":"2025-04-22T03:38:17.102Z"}
+{"hasApiKey":true,"level":"info","message":"Gemini initialized","timestamp":"2025-04-22T03:38:17.151Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2025-04-22T03:38:17.251Z"}
+{"level":"info","message":"POST /api/v1/auth/register","timestamp":"2025-04-22T03:38:22.515Z"}
